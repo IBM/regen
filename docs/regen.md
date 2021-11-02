@@ -37,13 +37,12 @@ by our system.
 ![](https://github.com/IBM/regen/blob/assets/imgs/generation_example.svg)
 
 <p align="center">
-<b>Figure 1.</b> <font size="-2"> An example of knowledge transfer where the first two sentences of
+<b>Figure 1.</b> An example of knowledge transfer where the first two sentences of
 the abstract of our paper (Dognin, et al., 2021) on top are processed
 through our ReGen models. First, a knowledge graph is constructed, then
 it is used as input to generate a paragraph of text using our system (on
 the right). Note that the generated paragraph captures the original
 sentences content accurately.
-</font>
 </p>
 
 The transfer from text-to-graph yields a graph representation of the
@@ -94,10 +93,12 @@ allowing generation in both directions, as presented in Figure 2.
 
 ![](https://github.com/IBM/regen/blob/assets/imgs/models.svg)
 
-Figure 2 Specialized and hybrid models rely on the same losses for
+<p align="center">
+<b>Figure 2.</b> Specialized and hybrid models rely on the same losses for
 fine-tuning. Specialized models are dedicated to a given generation
 direction while hybrid models can handle both directions (graph-to-text,
 text-to-graph).
+</p>
 
 In traditional approaches a model is trained by generating sequences
 that are then scored against ground truth examples, usually using a
@@ -112,12 +113,14 @@ critic, as seen in Figure 3.
 
 ![](https://github.com/IBM/regen/blob/assets/imgs/regen_rl.svg)
 
-Figure ReGen models are trained using Self Critical Sequence Training
+<p align="center">
+<b>Figure 3.</b> ReGen models are trained using Self Critical Sequence Training
 which is a policy gradient method where the baseline is the reward of
 the output of greedy-max generation p<sup>*</sup>, the model acting as its own
 critic. p<sup>s</sup> is a sampling of our policy that allows for exploration
 during training. The policy p is initialized to a large T5 PLM to ensure
 stability.
+</p>
 
 A large Pretrained Language Model (such as T5) is used as a good
 starting point for our policy. This is to enable stable training using
@@ -137,15 +140,17 @@ ReGen-RL are provided on the right in color (orange for CE, blue for
 RL). We can see that for these two examples ReGen-RL allows a more
 enriched, precise transfer.
 
-![](./media/image6.png)
+![](https://github.com/IBM/regen/blob/assets/imgs/examples.png)
 
-Figure Examples of generation for T2G and G2T with the difference
+<p align="center">
+<b>Figure 4.</b> Examples of generation for T2G and G2T with the difference
 between traditional CE and RL (ReGen) model outputs. Each example has an
 input sample at the top (text for T2G, graph for G2T), below to the left
 in gray is the ground truth of the target domain (graph for T2G, text
 for G2T), and below to the right is the generated output in color
 (orange for CE, blue for RL) to emphasize the difference between
 generation from CE and RL ReGen.
+</p>
 
 # IBM Research\'s Lead
 
@@ -240,11 +245,11 @@ current work:
     ultimate goal for this research and ReGen is one step forward in
     that direction.
 
-2.  Reward definition can allow for constrained generation in terms of
+1.  Reward definition can allow for constrained generation in terms of
     both structure and content, which can be very beneficial for
     applications where constrained generated output is required.
 
-3.  Fairness and Trust is another angle of investigation in this
+1.  Fairness and Trust is another angle of investigation in this
     paradigm for both generation directions as starting point PLMs may
     display bias from its own training data.
 
