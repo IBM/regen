@@ -157,17 +157,20 @@ generation from CE and RL ReGen.
 
 We compared ReGen to the top systems of the [WebNLG 2020 Challenge](https://webnlg-challenge.loria.fr/challenge_2020)
 a well-regarded public challenge for multilingual bi-directional generation between text and knowledge graph.
-We also used a larger dataset [TekGen](https://github.com/google-research-datasets/KELM-corpus#part-1-tekgen-training-corpus)
+Results for the public Challenge were given during [3rd International Workshop on Natural Language Generation from the Semantic Web (WebNLG+)](https://webnlg-challenge.loria.fr/workshop_2020/) with [proceedings available on anthology](https://aclanthology.org/volumes/2020.webnlg-1/).
+
+
+We also used a larger dataset [TekGen](https://github.com/google-research-datasets/KELM-corpus#part-1-tekgen-training-corpus) from Google Research.
 
 WebNLG is a difficult challenge. Its dataset is relatively small (13K
 train, 1.7K dev, 1.8K test) and includes unseen categories at test time.
 ReGen establishes new state-of-the-art results WebNLG 2020 Challenge
 dataset by large margins for both text-to-graph and graph-to-text
-directions, as demonstrated in Table 1 and Table 2.
+directions, as demonstrated in [Table 1](#tabwebg2t) and [Table 2](#tabwebt2g).
 
 On the much larger dataset TekGen (6.3M train, 5Kdev, 50K test), ReGen
 shows consistent gains for using Reinforced Generation, validating its
-use for large data operating points, as shown in Table 3 and Table 4.
+use for large data operating points, as shown in [Table 3](#tabtekg2t) and [Table 4](#tabtekt2g).
 
 We present results for both datasets, using well established metrics
 such as BLEU, METEOR, chrF++ for text generation. For graph generation,
@@ -177,6 +180,7 @@ matching (exact, partial, strict, entity type) as defined by the WebNLG
 and Table 4, full results are in our paper [(Dognin, et al., 2021)](#dognin2021) online
 on arXiv <https://arxiv.org/abs/2108.12472>
 
+
  WebNLG G2T                             | BLEU↑    | BLEU NLTK↑ | METEOR↑ | chrF++↑
 :---------------------------------------|:--------:|:----------:|:-------:|:-------:
 Amazon AI (Shanghai) (Guo, et al.,2020) | 0.540    | 0.535      | 0.417   | 0.690 |
@@ -185,6 +189,8 @@ Facebook FBConvAI (Yang, et al.,2020)   | 0.527    | 0.523      | 0.413   | 0.68
 Google bt5 (Agarwal, et al., 2020)      | 0.517    | 0.517      | 0.411   | 0.679 |
 IBM Research ReGen-CE                   | 0.553    | 0.549      | 0.418   | 0.694 |
 IBM Research ReGen-RL (Dognin, et al. 2021) | **0.563** | **0.559** | **0.425** | **0.706** |
+
+<a name="tabwebg2t"></a>
 
 <p align="center">
 <b>Table 1.</b> G2T best results for WebNLG 2020 Challenge dataset. The first
@@ -202,6 +208,8 @@ Google bt5 (Agarwal, et al., 2020)           | 0.682   | 0.670   | 0.701   |
 IBM Research ReGen-CE (Dognin, et al., 2021) | **0.723** | **0.714** | **0.738** |
 IBM Research ReGen-RL (Dognin, et al., 2021) | 0.720   | 0.712   | 0.734   |
 
+<a name="tabwebt2g"></a>
+
 <p align="center">
 <b>Table 2.</b> T2G best results for WebNLG 2020 Challenge dataset. The top 2
 rows were the Challenge top performers. ReGen models improve upon all
@@ -215,6 +223,7 @@ TekGen G2T                          |  BLEU↑ | BLEU NLTK↑ |  METEOR↑  |  c
 IBM ReGen-CE (Dognin, et al., 2021) |  0.241 |   0.242    |   0.233   |   0.405
 IBM ReGen-RL (Dognin, et al., 2021) | **0.262** |  **0.262** |  **0.242** |  **0.422**
 
+<a name="tabtekg2t"></a>
 
 <p align="center">
 <b>Table 3.</b> G2T TekGen Results: IBM Research ReGen-CE establishes a
@@ -227,6 +236,8 @@ TekGen T2G                          | F1↑    | Precision↑ | Recall↑
 :-----------------------------------|:------:|:----------:|:---------:
 IBM ReGen-CE (Dognin, et al., 2021) |  0.619 |   0.605    |   0.643
 IBM ReGen-RL (Dognin, et al., 2021) | **0.623** | **0.610** | **0.647**
+
+<a name="tabtekt2g"></a>
 
 <p align="center">
 <b> Table 4. </b> T2G TekGen Results: IBM Research ReGen-CE establishes a
@@ -265,29 +276,38 @@ Inkit Padhi, Igor Melnyk, and Payel Das.
 
 # Bibliography
 
-Agarwal, O. et al., 2020. *Machine Translation Aided Bilingual
-Data-to-Text Generation and Semantic Parsing.* Dublin, Ireland
-(Virtual)
+Agarwal, O. et al., 2020. [*Machine Translation Aided Bilingual
+Data-to-Text Generation and Semantic Parsing.*](https://aclanthology.org/2020.webnlg-1.13/)
+Dublin, Ireland (Virtual)
+<a name="agarwal2020"></a>
 
 Dognin, P. L., Padhi, I., Melnyk, I. & Das, P., 2021. [*ReGen:
 Reinforcement Learning for Text and Knowledge Base Generation using
-Pretrained Language Models.*](https://arxiv.org/abs/2108.12472) Punta Cana, Dominican Republic, EMNLP\'21.
+Pretrained Language Models.*](https://arxiv.org/abs/2108.12472)
+Punta Cana, Dominican Republic, EMNLP\'21.
 <a name="dognin2021"></a>
 
-Guo, Q. et al., 2020. *P2: A Plan-and-Pretrain Approach for Knowledge
-Graph-to-Text Generation.* Dublin, Ireland (Virtual), s.n.
+Guo, Q. et al., 2020. [*P<sup>2</sup>: A Plan-and-Pretrain Approach for Knowledge
+Graph-to-Text Generation.*](https://aclanthology.org/2020.webnlg-1.10/)
+Dublin, Ireland (Virtual)
+<a name="guo2020"></a>
 
 Li, X., Maskharashvili, A., Jory Stevens-Guille, S. & White, M., 2020.
-*Leveraging Large Pretrained Models for WebNLG 2020.* Dublin, Ireland
-(Virtual)
+[*Leveraging Large Pretrained Models for WebNLG 2020.*](https://aclanthology.org/2020.webnlg-1.12/)
+Dublin, Ireland (Virtual)
+<a name="li2020"></a>
 
-Rennie, S. J. et al., 2017. *Self-critical sequence training for image
-captioning.* Honolulu, Hawaii, Proceedings of the IEEE Conference on
-Computer Vision and Pattern Recognition.
+Rennie, S. J. et al., 2017. [*Self-critical sequence training for image
+captioning.*](https://openaccess.thecvf.com/content_cvpr_2017/papers/Rennie_Self-Critical_Sequence_Training_CVPR_2017_paper.pdf)
+Honolulu, Hawaii, Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.
+<a name="rennie2017"></a>
 
-Williams, R. J., 1992. Simple statistical gradient-following algorithms
-for connectionist reinforcement learning. *Machine learning,* 8(3), pp.
-229-256.
+Williams, R. J., 1992. [Simple statistical gradient-following algorithms
+for connectionist reinforcement learning](https://link.springer.com/article/10.1007/BF00992696).
+*Machine learning,* 8(3), pp. 229-256.
+<a name="Williams1992"></a>
 
-Yang, Z. et al., 2020. *Improving Text-to-Text Pre-trained Models for
-the Graph-to-Text Task.* Dublin, Ireland (Virtual)
+Yang, Z. et al., 2020. [*Improving Text-to-Text Pre-trained Models for
+the Graph-to-Text Task.*](https://aclanthology.org/2020.webnlg-1.11/)
+Dublin, Ireland (Virtual)
+<a name="yang2020"></a>
