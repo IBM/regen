@@ -4,7 +4,7 @@ Pierre Dognin, Inkit Padhi, Igor Melnyk, Payel Das
 
 # Introduction
 
-One foundational goal of IBM Research is to process real-word data in
+One foundational goal of [IBM Research](https://research.ibm.com/) is to process real-word data in
 all its modalities: text, graph, tabular data, time series, etc. All are
 important representations of knowledge commonly observed in
 information-centric applications. Information should be easily
@@ -154,10 +154,9 @@ generation from CE and RL ReGen.
 
 # IBM Research\'s Lead
 
-We compared ReGen to the top systems of the WebNLG 2020 Challenge
-[https://webnlg-challenge.loria.fr/challenge_2020](The%20transfer%20from%20text-to-graph%20yields%20a%20graph%20representation%20of%20the%20main%20facts%20of%20the%20input%20sentences.%20The%20subsequent%20graph-to-text%20translation%20provides%20another%20paragraph,%20distinct%20from%20the%20original%20input%20but%20covering%20the%20facts.),
-a well-regarded public challenge for multilingual bi-directional
-generation between text and knowledge graph.
+We compared ReGen to the top systems of the [WebNLG 2020 Challenge](https://webnlg-challenge.loria.fr/challenge_2020)
+a well-regarded public challenge for multilingual bi-directional generation between text and knowledge graph.
+We also used a larger dataset [TekGen](https://github.com/google-research-datasets/KELM-corpus#part-1-tekgen-training-corpus)
 
 WebNLG is a difficult challenge. Its dataset is relatively small (13K
 train, 1.7K dev, 1.8K test) and includes unseen categories at test time.
