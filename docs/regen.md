@@ -16,13 +16,11 @@ transfer of information between graph and text modalities.
 
 * Text to Graph: Automatic Generation of Knowledge Bases (KBs)
 
-![](https://github.com/IBM/regen/blob/assets/imgs/image1.svg){width="2.0972222222222223in"
-height="0.9305555555555556in"}
+![](https://github.com/IBM/regen/blob/assets/imgs/t2g.svg)
 
 * Graph to Text: Text generation from KBs
 
-> ![](./media/image2.emf){width="2.0972222222222223in"
-> height="0.9305555555555556in"}
+![](https://github.com/IBM/regen/blob/assets/imgs/g2t.svg)
 
 The text-to-graph (T2G) information transfer is a crucial step for
 building Knowledge Bases (KBs) from large text datasets. This is a
@@ -36,7 +34,7 @@ readable by humans like us.
 Figure 1 gives an example of this bi-directional transfer accomplished
 by our system.
 
-![](./media/image3.emf){width="6.5in" height="2.267361111111111in"}
+![](https://github.com/IBM/regen/blob/assets/imgs/generation_example.svg)
 
 Figure 1 An example of knowledge transfer where the first two sentences of
 the abstract of our paper (Dognin, et al., 2021) on top are processed
@@ -91,7 +89,7 @@ Our approach is composed of several conceptually important steps:
 Following this approach, we can build task-specialized, or hybrid models
 allowing generation in both directions, as presented in Figure 2.
 
-![](./media/image4.emf){width="6.5in" height="1.4736111111111112in"}
+![](https://github.com/IBM/regen/blob/assets/imgs/models.svg)
 
 Figure 2 Specialized and hybrid models rely on the same losses for
 fine-tuning. Specialized models are dedicated to a given generation
@@ -109,8 +107,7 @@ under greedy max generation. This is known as Self-Critical Sequence
 Training (SCST) (Rennie, et al., 2017) where the model serves as its own
 critic, as seen in Figure 3.
 
-![](./media/image5.emf){width="6.027777777777778in"
-height="1.4027777777777777in"}
+![](https://github.com/IBM/regen/blob/assets/imgs/regen_rl.svg)
 
 Figure ReGen models are trained using Self Critical Sequence Training
 which is a policy gradient method where the baseline is the reward of
@@ -137,8 +134,7 @@ ReGen-RL are provided on the right in color (orange for CE, blue for
 RL). We can see that for these two examples ReGen-RL allows a more
 enriched, precise transfer.
 
-![](./media/image6.png){width="2.6182010061242345in"
-height="6.628311461067367in"}
+![](./media/image6.png)
 
 Figure Examples of generation for T2G and G2T with the difference
 between traditional CE and RL (ReGen) model outputs. Each example has an
