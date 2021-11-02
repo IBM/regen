@@ -184,12 +184,12 @@ on arXiv <https://arxiv.org/abs/2108.12472>
 
  WebNLG G2T                             | BLEU↑    | BLEU NLTK↑ | METEOR↑ | chrF++↑
 :---------------------------------------|:--------:|:----------:|:-------:|:-------:
-Amazon AI (Shanghai) (Guo, et al.,2020) | 0.540    | 0.535      | 0.417   | 0.690 |
-OSU Neural NLG (Li, et al., 2020)       | 0.535    | 0.532      | 0.414   | 0.688 |
-Facebook FBConvAI (Yang, et al.,2020)   | 0.527    | 0.523      | 0.413   | 0.686 |
-Google bt5 (Agarwal, et al., 2020)      | 0.517    | 0.517      | 0.411   | 0.679 |
-IBM Research ReGen-CE                   | 0.553    | 0.549      | 0.418   | 0.694 |
-IBM Research ReGen-RL (Dognin, et al. 2021) | **0.563** | **0.559** | **0.425** | **0.706** |
+Amazon AI (Shanghai) [(Guo, et al.,2020)](#guo2020)        | 0.540    | 0.535      | 0.417   | 0.690 |
+OSU Neural NLG       [(Li, et al., 2020)](#li2020)         | 0.535    | 0.532      | 0.414   | 0.688 |
+Facebook FBConvAI    [(Yang, et al.,2020)](#yang2020)      | 0.527    | 0.523      | 0.413   | 0.686 |
+Google bt5           [(Agarwal, et al., 2020)](#agarwal)   | 0.517    | 0.517      | 0.411   | 0.679 |
+IBM Research ReGen-CE                                      | 0.553    | 0.549      | 0.418   | 0.694 |
+IBM Research ReGen-RL [(Dognin, et al. 2021)](#dognin2021) | **0.563** | **0.559** | **0.425** | **0.706** |
 
 <p align="center">
 <b>Table 1.</b> G2T best results for WebNLG 2020 Challenge dataset. The first
@@ -204,10 +204,10 @@ METEOR reward.
 
 WebNLG T2G                                   | F1↑     | Precision↑     | Recall↑
 :--------------------------------------------|:-------:|:--------------:|:-------:
-Amazon AI (Shanghai) (Guo, et al., 2020)     | 0.689   | 0.689   | 0.690   |
-Google bt5 (Agarwal, et al., 2020)           | 0.682   | 0.670   | 0.701   |
-IBM Research ReGen-CE (Dognin, et al., 2021) | **0.723** | **0.714** | **0.738** |
-IBM Research ReGen-RL (Dognin, et al., 2021) | 0.720   | 0.712   | 0.734   |
+Amazon AI (Shanghai) [(Guo, et al.,2020)](#guo2020)        | 0.689   | 0.689   | 0.690   |
+Google bt5           [(Agarwal, et al., 2020)](#agarwal)   | 0.682   | 0.670   | 0.701   |
+IBM Research ReGen-CE                                      | **0.723** | **0.714** | **0.738** |
+IBM Research ReGen-RL [(Dognin, et al. 2021)](#dognin2021) | 0.720   | 0.712   | 0.734   |
 
 <p align="center">
 <b>Table 2.</b> T2G best results for WebNLG 2020 Challenge dataset. The top 2
@@ -220,8 +220,8 @@ results.
 
 TekGen G2T                          |  BLEU↑ | BLEU NLTK↑ |  METEOR↑  |  chrF++↑
 :-----------------------------------|:------:|:----------:|:---------:|:---------:
-IBM ReGen-CE (Dognin, et al., 2021) |  0.241 |   0.242    |   0.233   |   0.405
-IBM ReGen-RL (Dognin, et al., 2021) | **0.262** |  **0.262** |  **0.242** |  **0.422**
+IBM ReGen-CE                        |  0.241 |   0.242    |   0.233   |   0.405
+IBM ReGen-RL [(Dognin, et al. 2021)](#dognin2021) | **0.262** |  **0.262** |  **0.242** |  **0.422**
 
 <p align="center">
 <b>Table 3.</b> G2T TekGen Results: IBM Research ReGen-CE establishes a
@@ -233,8 +233,8 @@ IBM ReGen-RL (Dognin, et al., 2021) | **0.262** |  **0.262** |  **0.242** |  **0
 
 TekGen T2G                          | F1↑    | Precision↑ | Recall↑
 :-----------------------------------|:------:|:----------:|:---------:
-IBM ReGen-CE (Dognin, et al., 2021) |  0.619 |   0.605    |   0.643
-IBM ReGen-RL (Dognin, et al., 2021) | **0.623** | **0.610** | **0.647**
+IBM ReGen-CE                        |  0.619 |   0.605    |   0.643
+IBM ReGen-RL  [(Dognin, et al. 2021)](#dognin2021) | **0.623** | **0.610** | **0.647**
 
 <p align="center">
 <b> Table 4. </b> T2G TekGen Results: IBM Research ReGen-CE establishes a
