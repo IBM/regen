@@ -36,12 +36,15 @@ by our system.
 
 ![](https://github.com/IBM/regen/blob/assets/imgs/generation_example.svg)
 
-Figure 1 An example of knowledge transfer where the first two sentences of
+<p align="center">
+<b>Figure 1.</b> <font size="-2"> An example of knowledge transfer where the first two sentences of
 the abstract of our paper (Dognin, et al., 2021) on top are processed
 through our ReGen models. First, a knowledge graph is constructed, then
 it is used as input to generate a paragraph of text using our system (on
 the right). Note that the generated paragraph captures the original
 sentences content accurately.
+</font>
+</p>
 
 The transfer from text-to-graph yields a graph representation of the
 main facts of the input sentences. The subsequent graph-to-text
@@ -111,8 +114,8 @@ critic, as seen in Figure 3.
 
 Figure ReGen models are trained using Self Critical Sequence Training
 which is a policy gradient method where the baseline is the reward of
-the output of greedy-max generation p^\*^, the model acting as its own
-critic. p^s^ is a sampling of our policy that allows for exploration
+the output of greedy-max generation p<sup>*</sup>, the model acting as its own
+critic. p<sup>s</sup> is a sampling of our policy that allows for exploration
 during training. The policy p is initialized to a large T5 PLM to ensure
 stability.
 
