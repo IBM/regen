@@ -4,15 +4,16 @@ Pierre Dognin, Inkit Padhi, Igor Melnyk, Payel Das
 
 # Introduction
 
-One foundational goal of [IBM Research](https://research.ibm.com/) is to process real-word data in
-all its modalities: text, graph, tabular data, time series, etc. All are
-important representations of knowledge commonly observed in
-information-centric applications. Information should be easily
-translated from one modality to another seamlessly, without compromising
-on its factual content. For example, representing facts from a text into
-a knowledge graph is a fundamental principle of knowledge
-representation. In this work, we focus on accurate bi-directional
-transfer of information between graph and text modalities.
+One foundational goal of [IBM Research](https://research.ibm.com/) is
+to process real-word data in all its modalities: text, graph, tabular
+data, time series, etc. All are important representations of knowledge
+commonly observed in information-centric applications. Information
+should be easily translated from one modality to another seamlessly,
+without compromising on its factual content. For example, representing
+facts from a text into a knowledge graph is a fundamental principle of
+knowledge representation. In this work, we focus on accurate
+bi-directional transfer of information between graph and text
+modalities.
 
 * Text to Graph: Automatic Generation of Knowledge Bases (KBs)
 
@@ -66,27 +67,27 @@ A version of our EMNLP\'21 paper can be found on arXiv
 <https://arxiv.org/abs/2108.12472>.
 
 Our team is composed of Pierre Dognin (Tech Lead), Inkit Padhi, Igor
-Melnyk and Payel Das.
+Melnyk, and Payel Das.
 
-Code will be released in the companion GitHub repos
-<https://github.com/IBM/regen>
+A code will be released in the companion GitHub repos
+<https://github.com/IBM/regen> during EMNLP\'21 conference.
 
 # IBM Research\'s Approach
 
 Our approach is composed of several conceptually important steps:
 
--   Generation tasks (text-to-graph, graph-to-text) are reframed as
-    sequence to sequence (seq2seq) translation tasks.
+* Generation tasks (text-to-graph, graph-to-text) are reframed as
+  sequence to sequence (seq2seq) translation tasks.
 
--   "Graph linearization" turns graphs into sequence of edges our models
-    can process easily.
+* "Graph linearization" turns graphs into sequence of edges our models
+  can process easily.
 
--   Pretrained Language Models (PLMs) built on large amount of data,
-    such as T5, are fine-tuned on both generation tasks.
+* Pretrained Language Models (PLMs) built on large amount of data,
+  such as T5, are fine-tuned on both generation tasks.
 
--   Both generation tasks are cast into the Reinforcement Learning
-    framework where a reward is attributed to the generated sequence
-    given a ground truth.
+* Both generation tasks are cast into the Reinforcement Learning
+  framework where a reward is attributed to the generated sequence
+  given a ground truth.
 
 Following this approach, we can build task-specialized, or hybrid models
 allowing generation in both directions, as presented in Figure 2.
@@ -162,8 +163,7 @@ WebNLG is a difficult challenge. Its dataset is relatively small (13K
 train, 1.7K dev, 1.8K test) and includes unseen categories at test time.
 ReGen establishes new state-of-the-art results WebNLG 2020 Challenge
 dataset by large margins for both text-to-graph and graph-to-text
-
-Direction, as demonstrated in Table 1 and Table 2.
+directions, as demonstrated in Table 1 and Table 2.
 
 On the much larger dataset TekGen (6.3M train, 5Kdev, 50K test), ReGen
 shows consistent gains for using Reinforced Generation, validating its
@@ -174,7 +174,7 @@ such as BLEU, METEOR, chrF++ for text generation. For graph generation,
 we use F1, Precision, Recall for nodes and edges w/ different levels of
 matching (exact, partial, strict, entity type) as defined by the WebNLG
 2020 Challenge. Note we only report results for exact match in Table 3
-and Table 4, full results are in our paper (Dognin, et al., 2021) online
+and Table 4, full results are in our paper [(Dognin, et al., 2021)](#dognin2021) online
 on arXiv <https://arxiv.org/abs/2108.12472>
 
  WebNLG G2T                             | BLEU↑    | BLEU NLTK↑ | METEOR↑ | chrF++↑
@@ -269,9 +269,10 @@ Agarwal, O. et al., 2020. *Machine Translation Aided Bilingual
 Data-to-Text Generation and Semantic Parsing.* Dublin, Ireland
 (Virtual)
 
-Dognin, P. L., Padhi, I., Melnyk, I. & Das, P., 2021. *ReGen:
+Dognin, P. L., Padhi, I., Melnyk, I. & Das, P., 2021. [*ReGen:
 Reinforcement Learning for Text and Knowledge Base Generation using
-Pretrained Language Models.* Punta Cana, Dominican Republic, EMNLP\'21.
+Pretrained Language Models.*](https://arxiv.org/abs/2108.12472) Punta Cana, Dominican Republic, EMNLP\'21.
+<a name="dognin2021"></a>
 
 Guo, Q. et al., 2020. *P2: A Plan-and-Pretrain Approach for Knowledge
 Graph-to-Text Generation.* Dublin, Ireland (Virtual), s.n.
