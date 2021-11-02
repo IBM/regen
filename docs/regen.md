@@ -16,7 +16,7 @@ transfer of information between graph and text modalities.
 
 * Text to Graph: Automatic Generation of Knowledge Bases (KBs)
 
-![](/../../assets/imgs/image1.svg){width="2.0972222222222223in"
+![](https://github.com/IBM/regen/blob/assets/imgs/image1.svg){width="2.0972222222222223in"
 height="0.9305555555555556in"}
 
 * Graph to Text: Text generation from KBs
