@@ -180,6 +180,7 @@ matching (exact, partial, strict, entity type) as defined by the WebNLG
 and Table 4, full results are in our paper [(Dognin, et al., 2021)](#dognin2021) online
 on arXiv <https://arxiv.org/abs/2108.12472>
 
+<a name="tabwebg2t"></a>
 
  WebNLG G2T                             | BLEU↑    | BLEU NLTK↑ | METEOR↑ | chrF++↑
 :---------------------------------------|:--------:|:----------:|:-------:|:-------:
@@ -190,8 +191,6 @@ Google bt5 (Agarwal, et al., 2020)      | 0.517    | 0.517      | 0.411   | 0.67
 IBM Research ReGen-CE                   | 0.553    | 0.549      | 0.418   | 0.694 |
 IBM Research ReGen-RL (Dognin, et al. 2021) | **0.563** | **0.559** | **0.425** | **0.706** |
 
-<a name="tabwebg2t"></a>
-
 <p align="center">
 <b>Table 1.</b> G2T best results for WebNLG 2020 Challenge dataset. The first
 4 rows were the Challenge top performers. Results for IBM Research ReGen
@@ -201,14 +200,14 @@ METEOR reward.
 </p>
 
 
+<a name="tabwebt2g"></a>
+
 WebNLG T2G                                   | F1↑     | Precision↑     | Recall↑
 :--------------------------------------------|:-------:|:--------------:|:-------:
 Amazon AI (Shanghai) (Guo, et al., 2020)     | 0.689   | 0.689   | 0.690   |
 Google bt5 (Agarwal, et al., 2020)           | 0.682   | 0.670   | 0.701   |
 IBM Research ReGen-CE (Dognin, et al., 2021) | **0.723** | **0.714** | **0.738** |
 IBM Research ReGen-RL (Dognin, et al., 2021) | 0.720   | 0.712   | 0.734   |
-
-<a name="tabwebt2g"></a>
 
 <p align="center">
 <b>Table 2.</b> T2G best results for WebNLG 2020 Challenge dataset. The top 2
@@ -217,13 +216,12 @@ metrics for all matching schemes, providing new State-of-the-art
 results.
 </p>
 
+<a name="tabtekg2t"></a>
 
 TekGen G2T                          |  BLEU↑ | BLEU NLTK↑ |  METEOR↑  |  chrF++↑
 :-----------------------------------|:------:|:----------:|:---------:|:---------:
 IBM ReGen-CE (Dognin, et al., 2021) |  0.241 |   0.242    |   0.233   |   0.405
 IBM ReGen-RL (Dognin, et al., 2021) | **0.262** |  **0.262** |  **0.242** |  **0.422**
-
-<a name="tabtekg2t"></a>
 
 <p align="center">
 <b>Table 3.</b> G2T TekGen Results: IBM Research ReGen-CE establishes a
@@ -231,13 +229,12 @@ IBM ReGen-RL (Dognin, et al., 2021) | **0.262** |  **0.262** |  **0.242** |  **0
   upon this baseline on all metrics for text-to-graph generation.
 </p>
 
+<a name="tabtekt2g"></a>
 
 TekGen T2G                          | F1↑    | Precision↑ | Recall↑
 :-----------------------------------|:------:|:----------:|:---------:
 IBM ReGen-CE (Dognin, et al., 2021) |  0.619 |   0.605    |   0.643
 IBM ReGen-RL (Dognin, et al., 2021) | **0.623** | **0.610** | **0.647**
-
-<a name="tabtekt2g"></a>
 
 <p align="center">
 <b> Table 4. </b> T2G TekGen Results: IBM Research ReGen-CE establishes a
