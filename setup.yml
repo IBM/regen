@@ -1,0 +1,21 @@
+name: regen
+channels:
+  - anaconda
+  - pytorch
+  - huggingface
+  - conda-forge
+dependencies:
+  - python>=3.8
+  - pytorch=1.7.1=py3.8_cuda11.0.221_cudnn8.0.5_0
+  - pip>=21.0
+  - pip:
+    - transformers==4.2.2
+    - datasets>=1.2.1
+    - python-json-logger>=0.1.11
+    - tensorflow==2.4.1
+    - sentencepiece>=0.1.95
+    - numpy>=1.19.2
+    - sacrebleu>=1.5.0
+    - addict>=2.4.0
+    - networkx>=2.5.0
+    - ConfigArgParse>=1.2.3

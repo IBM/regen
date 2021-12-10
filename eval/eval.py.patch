@@ -1,0 +1,94 @@
+diff --git a/eval.py b/eval.py
+index def929e..59159a9 100644
+--- a/eval.py
++++ b/eval.py
+@@ -4,10 +4,10 @@ __author__='thiagocastroferreira'
+ Author: Organizers of the 2nd WebNLG Challenge
+ Date: 23/04/2020
+ Description:
+-    This script aims to evaluate the output of data-to-text NLG models by 
+-    computing popular automatic metrics such as BLEU (two implementations), 
++    This script aims to evaluate the output of data-to-text NLG models by
++    computing popular automatic metrics such as BLEU (two implementations),
+     METEOR, chrF++, TER and BERT-Score.
+-    
++
+     ARGS:
+         usage: eval.py [-h] -R REFERENCE -H HYPOTHESIS [-lng LANGUAGE] [-nr NUM_REFS]
+                [-m METRICS] [-nc NCORDER] [-nw NWORDER] [-b BETA]
+@@ -31,7 +31,7 @@ Description:
+           -b BETA, --beta BETA  chrF metric: beta parameter (default=2)
+ 
+     EXAMPLE:
+-        ENGLISH: 
++        ENGLISH:
+             python3 eval.py -R data/en/references/reference -H data/en/hypothesis -nr 4 -m bleu,meteor,chrf++,ter,bert,bleurt
+         RUSSIAN:
+             python3 eval.py -R data/ru/reference -H data/ru/hypothesis -lng ru -nr 1 -m bleu,meteor,chrf++,ter,bert
+@@ -51,7 +51,7 @@ import re
+ from bert_score import score
+ from metrics.chrF import computeChrF
+ from metrics.bleurt.bleurt import score as bleurt_score
+-sys.argv = sys.argv[:1]
++# sys.argv = sys.argv[:1]
+ from nltk.translate.bleu_score import corpus_bleu, SmoothingFunction
+ from razdel import tokenize
+ from tabulate import tabulate
+@@ -68,7 +68,9 @@ def parse(refs_path, hyps_path, num_refs, lng='en'):
+     for i in range(num_refs):
+         fname = refs_path + str(i) if num_refs > 1 else refs_path
+         with codecs.open(fname, 'r', 'utf-8') as f:
+-            texts = f.read().split('\n')
++            texts__ = f.readlines()  # f.read().split('\n')
++            texts = [text.strip() for text in texts__]  # remove end of lines
++
+             for j, text in enumerate(texts):
+                 if len(references) <= j:
+                     references.append([text])
+@@ -85,7 +87,8 @@ def parse(refs_path, hyps_path, num_refs, lng='en'):
+ 
+     # hypothesis
+     with codecs.open(hyps_path, 'r', 'utf-8') as f:
+-        hypothesis = f.read().split('\n')
++        hypothesis__ = f.readlines()  # f.read().split('\n')
++        hypothesis = [text.strip() for text in hypothesis__]  # remove end of lines
+ 
+     # hypothesis tokenized
+     hypothesis_tok = copy.copy(hypothesis)
+@@ -270,9 +273,9 @@ def bleurt(references, hypothesis, num_refs, checkpoint = "metrics/bleurt/bleurt
+ def run(refs_path, hyps_path, num_refs, lng='en', metrics='bleu,meteor,chrf++,ter,bert,bleurt',ncorder=6, nworder=2, beta=2):
+     metrics = metrics.lower().split(',')
+     references, references_tok, hypothesis, hypothesis_tok = parse(refs_path, hyps_path, num_refs, lng)
+-    
++
+     result = {}
+-    
++
+     logging.info('STARTING EVALUATION...')
+     if 'bleu' in metrics:
+         bleu = bleu_score(refs_path, hyps_path, num_refs)
+@@ -298,7 +301,7 @@ def run(refs_path, hyps_path, num_refs, lng='en', metrics='bleu,meteor,chrf++,te
+         s = bleurt(references, hypothesis, num_refs)
+         result['bleurt'] = s
+     logging.info('FINISHING EVALUATION...')
+-    
++
+     return result
+ 
+ 
+@@ -331,7 +334,7 @@ if __name__ == '__main__':
+     logging.info('FINISHING TO READ INPUTS...')
+ 
+     result = run(refs_path=refs_path, hyps_path=hyps_path, num_refs=num_refs, lng=lng, metrics=metrics, ncorder=ncorder, nworder=nworder, beta=beta)
+-    
++
+     metrics = metrics.lower().split(',')
+     headers, values = [], []
+     if 'bleu' in metrics:
+@@ -361,4 +364,4 @@ if __name__ == '__main__':
+         values.append(round(result['bleurt'], 2))
+ 
+     logging.info('PRINTING RESULTS...')
+-    print(tabulate([values], headers=headers))
+\ No newline at end of file
++    print(tabulate([values], headers=headers))

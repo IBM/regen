@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+tools/logs/
+output*/
+caches/
+corpora/webnlg-dataset/
+corpora/webnlg-references/
+corpora/tekgen
+eval/GenerationEval/
+eval/WebNLG-Text-to-triples/
+score*/
+sdir*/
+ldir*/

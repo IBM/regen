@@ -1,0 +1,122 @@
+diff --git a/Evaluation_script.py b/Evaluation_script.py
+index 69c730b..fe4dfa2 100644
+--- a/Evaluation_script.py
++++ b/Evaluation_script.py
+@@ -109,6 +109,11 @@ def nonrefwords(newreflist, newcandlist, foundnum, ngramlength):
+ 
+                 #Now find the start and end index of the ngram in the candidate as well
+                 findnewcand = find_sub_list(list(ngram), newcandlist)
++
++                ## skip if new candidate is None
++                if findnewcand is None:
++                    continue
++
+                 #And all the indices in between
+                 newcandindex = list(range(findnewcand[0], findnewcand[1]+1))
+                 # Change the matched words to FOUNDCAND-[FOUNDNUMBER]-[REFERENCE-FOUNDINDEX]
+@@ -848,6 +853,105 @@ def main(reffile, candfile):
+     calculateSystemScore(totalsemevallist, totalsemevallistpertag, newreflist, newcandlist)
+     calculateExactTripleScore(reflist, candlist)
+ 
++
++# calculate F1 score
++def calculateF1Score(totalsemevallist, totalsemevallistpertag, newreflist, newcandlist):
++    exactf1 = []
++
++    # Get all the permutations of the number of scores given per candidate, so if there's 4 candidates, but 3 references, this part ensures that one of
++    # The four will not be scored
++    for idx, candidate in enumerate(newcandlist):
++        if len(newcandlist[idx]) > len(newreflist[idx]):
++            # Get all permutations
++            choosecands = list(itertools.permutations([x[0] for x in enumerate(totalsemevallist[idx])], len(totalsemevallist[idx][0])))
++            # The permutations in different orders are not necessary: we only need one order without the number of candidates we're looking at
++            choosecands = set([tuple(sorted(i)) for i in choosecands])  # Sort inner list and then use set
++            choosecands = list(map(list, choosecands))  # Converting back to list
++        else:
++            # Otherwise, we're just going to score all candidates
++            choosecands = [list(range(len(newcandlist[idx])))]
++
++        # Get all permutations in which the scores can be combined
++        if len(newcandlist[idx]) > len(newreflist[idx]):
++            choosescore = list(itertools.permutations([x[0] for x in enumerate(totalsemevallist[idx][0])], len(newreflist[idx])))
++            choosescore = [list(x) for x in choosescore]
++        else:
++            choosescore = list(itertools.permutations([x[0] for x in enumerate(totalsemevallist[idx][0])], len(newcandlist[idx])))
++            choosescore = [list(x) for x in choosescore]
++
++        # Get all possible combinations between the candidates and the scores
++        combilist = list(itertools.product(choosecands, choosescore))
++
++        totaldict = {'totalscore': 0}
++
++        for combination in combilist:
++            combiscore = 0
++            # Take the combination between the candidate and the score
++            zipcombi = list(zip(combination[0], combination[1]))
++            collectedsemeval = []
++            collectedsemevalpertag = []
++
++            for zc in zipcombi:
++                collectedscores = totalsemevallist[idx][zc[0]][zc[1]]
++                f1score = statistics.mean([collectedscores['ent_type']['f1'], collectedscores['partial']['f1'], collectedscores['strict']['f1'], collectedscores['exact']['f1']])
++                combiscore += f1score
++
++                collectedsemeval.append(collectedscores)
++                collectedsemevalpertag.append(totalsemevallistpertag[idx][zc[0]][zc[1]])
++
++
++            # If the combination is the highest score thus far, or the first score, make it the totaldict
++            if (combiscore > totaldict['totalscore']) or (len(totaldict) == 1):
++                totaldict = {'totalscore': combiscore, 'combination': combination, 'semevallist': collectedsemeval,
++                             'semevalpertaglist': collectedsemevalpertag}
++
++        #selectedsemevallist = selectedsemevallist + totaldict['semevallist']
++
++        scores = [x['exact']['f1'] for x in totaldict['semevallist']]
++        exactf1.append(statistics.mean(scores) if len(scores) > 0 else 0)
++
++    # exactf1 = statistics.mean([x['exact']['f1'] for x in selectedsemevallist])
++    # exactf1 = [x['exact']['f1'] for x in selectedsemevallist]
++
++    return exactf1
++
++
++# prepare list
++def prepareList(lst):
++
++    newcandlist = []
++
++    for entry in lst:
++        newtriples = []
++        for triple in entry:
++            newtriple = re.sub(r"([a-z])([A-Z])", "\g<1> \g<2>", triple).lower()
++            newtriple = re.sub(r'_', ' ', newtriple).lower()
++            newtriple = re.sub(r'\s+', ' ', newtriple).lower()
++            adjusttriple = newtriple.split(' | ')
++            manualmodified = re.search(r'^(.*?)(\s\((.*?)\))$', adjusttriple[-1])
++            if manualmodified:
++                adjusttriple[-1] = manualmodified.group(1)
++                newtriple = ' | '.join(adjusttriple)
++            newtriples.append(newtriple)
++        newcandlist.append(newtriples)
++
++    return newcandlist
++
++# compute only exactF1 score
++def compute_exactF1(reflist, candlist):
++    # reflist, candlist: Python list of lists of strings. For example
++    # reflist = [ ['karnataka | has to its west | arabian sea', 'acharya institute of technology | state | karnataka'],
++    #             ['abilene regional airport | city served | abilene, texas', 'abilene, texas | is part of | texas']  ]
++
++    newreflist = prepareList(reflist)
++    newcandlist = prepareList(candlist)
++    totalsemevallist, totalsemevallistpertag = calculateAllScores(newreflist, newcandlist)
++    exactF1 = calculateF1Score(totalsemevallist, totalsemevallistpertag, newreflist, newcandlist)
++
++    # list of scores for each ref-cand pair
++    return exactF1
++
++
+ #main(currentpath + '/Refs.xml', currentpath + '/Cands2.xml')
+ if __name__ == '__main__':
+     main(sys.argv[1], sys.argv[2])
