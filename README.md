@@ -18,8 +18,8 @@ Details are given in the long paper [ReGen: Reinforcement Learning for Text and 
 
 
 Contacts:
-- Pierre Dognin `pdognin{at}us[dot]ibm[dot]com`
-- Inkit Padhi `inkit.padhi{@}ibm[dot]com`
+- Pierre Dognin `pdognin{at_}us[dot_]ibm[_dot]com`
+- Inkit Padhi `inkit.padhi[_at]ibm{dot}com`
 
 
 ---
